@@ -1,0 +1,60 @@
+---
+title: "Tarea 1"
+author: "Bruno Bellagamba"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+###Ejercicio 1
+```{r figs, fig.cap="Grafico de dispersion de la variable años contra esperanza de vida, podemos observar que años mas recientes corresponden con una esperanza de vida mas elevada"}
+library(gapminder)
+library(ggplot2)
+library(tidyverse)
+library(gridExtra)
+
+ggplot(gapminder,aes  (x=lifeExp, y=year , color=continent))+
+  geom_point()+
+  geom_smooth(method = "lm",se=FALSE)+
+  labs(x="Esperanza de vida" , y="Año" , color="Continente")+
+  ggtitle("Año segun esperanza de vida")####Creo que lo mas correcto seria cambiar los ejes, puesto que seria mas logico querer explicar la esperanza de vida segun el año
+```
+
+###Ejercicio 2
+```{r}
+ggplot(gapminder,aes  (x=lifeExp, y=year , color=continent))+
+  geom_smooth(method = "lm",se=FALSE)+
+  labs(x="Esperanza de vida" , y="Año" , color="Continente")+
+  ggtitle("Año segun esperanza de vida")
+```
+Esto sucede porque en el codigo solo se quito la capa correspondiente a los puntos, la capa que genera las lineas regresoras es la geom_smooth
+
+###Ejercicio 3
+
+```{r}
+ggplot(gapminder,aes(x=gdpPercap,y=lifeExp,color=continent)) + 
+  geom_jitter() + 
+  facet_wrap(~continent)+
+  labs(x="PIB per Capita" , y="Esperanza de vida" , color="Continente")
+```
+En este grafico se pueden observar varias cuestiones de interes, por ejemplo que el continente africano es el que tiene la esperanza de vida mas baja con gran cantidad de paises por debajo de los 40 años o que Asia parece ser el continente mas disperso tanto en nivel de PIB per capita como en esperanza de vida.
+
+###Ejercicio 4
+```{r}
+ggplot(gapminder,aes(x=gdpPercap,y=year,color=continent)) +
+  geom_smooth(method=lm,aes(group=country),se=FALSE) +
+  facet_wrap(~continent)+
+  labs(x="PIB per Cápita",y="Año",color="Continente")
+```
+
+###Ejercicio 5
+```{r}
+uruguay<-filter(gapminder,country == "Uruguay")
+plot1 <-ggplot(uruguay,aes(x=year,y=lifeExp)) + geom_point(color="blue") +labs(x="Año" , y="Esperanza de vida" )
+plot2 <- ggplot(uruguay,aes(x=year,y=gdpPercap)) + geom_point(color="red")+labs(x="Año" , y="PIB per Capita")
+plot3 <- ggplot(uruguay,aes(x=year,y=pop)) + geom_point(color="green") +labs(x="Año" , y="Población" )
+grid.arrange(plot1, plot2,plot3, ncol=3)
+```
+
+Podriamos enfocarnos unicamente en el efecto que tuvo el paso de los años sobre algunas variables de gran importancia para Uruguay.Se puede observar , que en Uruguay el paso de los años a logrado que mejoraran sustancialmente todas las variables a considerar, la esperanza de vida, el PIB per capita asi tambien como su poblacion.
