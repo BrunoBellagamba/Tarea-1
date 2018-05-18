@@ -81,6 +81,6 @@ No es bueno incluir en el mismo entorno gráfico visualizaciones que tienen dist
 
 
 <span style="color:green">
-Usar el corrector ortográfico, estaá en Edit Check spelling (hay que cambiar el idioma si está en inglés). Hay que incluir en las figuras titulos que permitan saber lo que estamos viendo y si hay un gráfico debe haber al menos un comentario interesante sobre lo que aprendo del mismo.
+Usar el corrector ortográfico, está en Edit Check spelling (hay que cambiar el idioma si está en inglés). Hay que incluir en las figuras títulos que permitan saber lo que estamos viendo y si hay un gráfico debe haber al menos un comentario interesante sobre lo que aprendo del mismo.
 PUNTOS: 85/100
 </span>
